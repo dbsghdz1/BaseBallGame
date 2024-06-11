@@ -7,5 +7,8 @@
 
 import Foundation
 
-print("Hello, World!")
+let screen = message()
 
+screen.startMessage()
+let pb = PlayBall()
+pb.gameStart()

@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD400DD52C18106000BFFDA3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400DD42C18106000BFFDA3 /* main.swift */; };
+		DD400DD52C18106000BFFDA3 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400DD42C18106000BFFDA3 /* data.swift */; };
+		DD400DDE2C1810B500BFFDA3 /* controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400DDD2C1810B500BFFDA3 /* controller.swift */; };
+		DD400DE02C18193300BFFDA3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400DDF2C18193300BFFDA3 /* main.swift */; };
+		DD400DE22C18194300BFFDA3 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400DE12C18194300BFFDA3 /* view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,10 @@
 
 /* Begin PBXFileReference section */
 		DD400DD12C18106000BFFDA3 /* NumberBaseball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NumberBaseball; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD400DD42C18106000BFFDA3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DD400DD42C18106000BFFDA3 /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		DD400DDD2C1810B500BFFDA3 /* controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = controller.swift; sourceTree = "<group>"; };
+		DD400DDF2C18193300BFFDA3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DD400DE12C18194300BFFDA3 /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,36 @@
 		DD400DD32C18106000BFFDA3 /* NumberBaseball */ = {
 			isa = PBXGroup;
 			children = (
-				DD400DD42C18106000BFFDA3 /* main.swift */,
+				DD400DE32C18194800BFFDA3 /* View */,
+				DD400DDC2C18109B00BFFDA3 /* Controller */,
+				DD400DDB2C18108D00BFFDA3 /* Model */,
+				DD400DDF2C18193300BFFDA3 /* main.swift */,
 			);
 			path = NumberBaseball;
+			sourceTree = "<group>";
+		};
+		DD400DDB2C18108D00BFFDA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD400DD42C18106000BFFDA3 /* data.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD400DDC2C18109B00BFFDA3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DD400DDD2C1810B500BFFDA3 /* controller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DD400DE32C18194800BFFDA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD400DE12C18194300BFFDA3 /* view.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD400DD52C18106000BFFDA3 /* main.swift in Sources */,
+				DD400DE22C18194300BFFDA3 /* view.swift in Sources */,
+				DD400DD52C18106000BFFDA3 /* data.swift in Sources */,
+				DD400DDE2C1810B500BFFDA3 /* controller.swift in Sources */,
+				DD400DE02C18193300BFFDA3 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
