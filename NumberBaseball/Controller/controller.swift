@@ -5,80 +5,83 @@
 //  Created by 김윤홍 on 6/11/24.
 //
 
+protocol MessageProtocol {
+    func selectOption() -> String
+    func startMessage()
+    func inputMessage() -> String
+    func incorrect()
+    func correct()
+    func nothing()
+    func finish()
+    func showRecord()
+    func record()
+}
+
+// Class for handling the game logic
 class PlayBall {
-    let msg = message()
-    var systemNum = Number()
-    //질문 초기화 부분
-    init(systemNum: Number = Number()) {
-        self.systemNum.number = generateSystem()
+    let msg: MessageProtocol
+    var systemNum: Number
+    let checkInput: CheckInputMessage
+    let makeRandom: GenerateRandomNumber
+    
+    init(msg: MessageProtocol, systemNum: Number, checkInput: CheckInputMessage, makeRandom: GenerateRandomNumber) {
+        self.msg = msg
+        self.systemNum = systemNum
+        self.checkInput = checkInput
+        self.makeRandom = makeRandom
+        self.systemNum.number = makeRandom.generateSystem()
     }
     
     func gameStart() {
-        var optionNumber = msg.selectOption()
+        let optionNumber = msg.selectOption()
+        systemNum.number = [1,2,3]
         switch optionNumber {
         case "1":
             firstOption()
         case "2":
             secondOption()
-            fallthrough
         case "3":
-            print("종료합니다.")
+            msg.finish()
+            return
         default:
             print("올바른 숫자를 입력해주세요!")
-            optionNumber = msg.selectOption()
+            gameStart()
         }
     }
     
+    // 1번옵션 1번 로직 이상함 while 문부터
     func firstOption() {
         msg.startMessage()
         var i = 0
         while true {
-            var userNum = msg.inputMessage()
-            while !checkInput(userNum) {
+            var userNum = msg.inputMessage() //메시지 입력 받기
+            while !checkInput.checkInput(userNum) {
                 userNum = msg.inputMessage()
             }
             let userNumber = userNum.map({ Int(String($0))! })
-            if playBall(systemNum.number, userNumber) == "정답입니다!" {
-                print("정답입니다!")
-                systemNum.gameRecord.append(i)
+            let result = playBall(systemNum.number, userNumber)
+            if result == "정답입니다!" {
+                print(result)
+                systemNum.gameRecord.append(i + 1)
                 gameStart()
             } else {
-                print(playBall(systemNum.number, userNumber))
+                print(result)
             }
             i += 1
         }
     }
     
+    // 2번 옵션
     func secondOption() {
-        print("< 게임 기록 보기 >")
+        msg.showRecord()
         for (i, j) in systemNum.gameRecord.enumerated() {
+            msg.record()
             print("\(i + 1)번째 게임 : 시도횟수 - \(j)")
         }
+        gameStart()
     }
     
-    func checkInput(_ input: String) -> Bool {
-        if input.count != 3 {
-            print("올바르지 않은 입력값입니다.")
-            return false
-        }
-        if Set(input).count != input.count {
-            print("올바르지 않은 입력값입니다.")
-            return false
-        }
-        
-        if Int(input) != nil {
-        } else {
-            print("올바르지 않은 입력값입니다.")
-            return false
-        }
-        let arrInput = Array(input)
-        if arrInput[0] == "0" {
-            print("올바르지 않은 입력값입니다.")
-            return false
-        }
-        return true
-    }
-    
+    // 스트라이크 볼 확인 로직
     func playBall(_ system: [Int], _ user: [Int]) -> String {
         var strike = 0
         var ball = 0
@@ -98,24 +101,43 @@ class PlayBall {
         }
         return "\(strike)스트라이크 \(ball)볼"
     }
-    
+}
+
+// 랜덤 숫자 생성
+class GenerateRandomNumber {
     func generateSystem() -> [Int]{
-        var number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        let noZeroArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        var addZero = true
+        var number = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         var system:[Int] = []
-        for i in 0...2 {
-            if i == 0 {
-                if let randNum = noZeroArr.randomElement() {
-                    system.append(randNum)
-                    number.remove(at: number.firstIndex(of: randNum)!)
-                }
-            } else {
-                if let randNum = number.randomElement() {
-                    system.append(randNum)
-                    number.remove(at: number.firstIndex(of: randNum)!)
-                }
+        for _ in 0...2 {
+            if let randNum = number.randomElement() {
+                system.append(randNum)
+                number.removeAll { $0 == randNum }
+            }
+            if addZero {
+                number.append(0)
+                addZero = false
             }
         }
         return system
+    }
+}
+
+
+// 입력값이 올바른지 확인
+class CheckInputMessage {
+    let msg = Message()
+    func checkInput(_ input: String) -> Bool {
+        let isValid = input.count != 3 || input.count != Set(input).count || Int(input) == nil
+        if isValid {
+            msg.incorrect()
+            return false
+        }
+        let arrInput = Array(input)
+        if arrInput[0] == "0" {
+            msg.incorrect()
+            return false
+        }
+        return true
     }
 }

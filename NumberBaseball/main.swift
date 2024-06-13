@@ -5,10 +5,5 @@
 //  Created by 김윤홍 on 6/11/24.
 //
 
-import Foundation
-
-let screen = message()
-
-screen.startMessage()
-let pb = PlayBall()
+let pb = PlayBall(msg: Message(), systemNum: Number(), checkInput: CheckInputMessage(), makeRandom: GenerateRandomNumber())
 pb.gameStart()
