@@ -8,7 +8,12 @@
 import Foundation
 
 class Message: MessageProtocol {
-    func startMessage() {
+
+    func recordAttempt(gameNumber: Int, attemptCount: Int) {
+        print("\(gameNumber)번째 게임 : 시도 횟수 - \(attemptCount)\n")
+    }
+    
+    func showStartMessage() {
         print(" ██████  ██       █████  ██    ██     ██████   █████  ██      ██\n",
               "██   ██ ██      ██   ██  ██  ██      ██   ██ ██   ██ ██      ██\n",
               "██████  ██      ███████   ████       ██████  ███████ ██      ██\n",
@@ -18,7 +23,7 @@ class Message: MessageProtocol {
         print("< 게임을 시작합니다 > \n 숫자를 입력하세요")
     }
     
-    func inputMessage() -> String {
+    func promptUserInput() -> String {
         let msg = readLine()!
         return msg
     }
@@ -30,19 +35,19 @@ class Message: MessageProtocol {
         return option
     }
     
-    func incorrect() {
+    func showIncorrectInputMessage() {
         print("올바르지 않은 입력값입니다")
     }
     
-    func correct() {
+    func showCorrectMessage() {
         print("정답입니다")
     }
     
-    func nothing() {
+    func showNothingMessage() {
         print("Nothing")
     }
     
-    func finish() {
+    func showFinishMessage() {
         print("< 숫자 야구 게임을 종료합니다 >")
         print(  "  ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████\n",
                 "██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██\n",
@@ -51,14 +56,12 @@ class Message: MessageProtocol {
                  " ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██\n\n")
     }
     
-    func record() {
+    func showRecords() {
         print("  ██████   █████  ███    ███ ███████     ██████  ███████  ██████  ██████  ██████  ██████\n",
               "██       ██   ██ ████  ████ ██          ██   ██ ██      ██      ██    ██ ██   ██ ██   ██\n",
               "██   ███ ███████ ██ ████ ██ █████       ██████  █████   ██      ██    ██ ██████  ██   ██\n",
               "██    ██ ██   ██ ██  ██  ██ ██          ██   ██ ██      ██      ██    ██ ██   ██ ██   ██\n",
                " ██████  ██   ██ ██      ██ ███████     ██   ██ ███████  ██████  ██████  ██   ██ ██████ \n\n")
-    }
-    func showRecord() {
         print("< 게임 기록 보기 >")
     }
 
