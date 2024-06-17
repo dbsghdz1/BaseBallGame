@@ -30,8 +30,8 @@
             filePath = "NumberBaseball/Controller/controller.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "gameStart()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,24 @@
             filePath = "NumberBaseball/Controller/controller.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "gameStart()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E41E658-1461-4742-B754-484C00856B31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NumberBaseball/Controller/controller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "gameStart()"
             landmarkType = "7">
          </BreakpointContent>

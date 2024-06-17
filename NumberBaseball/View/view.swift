@@ -5,8 +5,7 @@
 //  Created by 김윤홍 on 6/11/24.
 //
 
-import Foundation
-
+///모든 메세지를 다루는 있는 클래스
 class Message: MessageProtocol {
 
     func recordAttempt(gameNumber: Int, attemptCount: Int) {
